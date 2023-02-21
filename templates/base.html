@@ -1,0 +1,171 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>{% block titulo %}ExMoney{% endblock titulo %}</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Create favicon -->
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/img/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/img/logo/favicon-16x16.png">
+
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- ========================= CSS here ========================= -->
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-5.0.0-beta2.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/LineIcons.2.0.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/tiny-slider.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/scrolltop.css' %}">
+    {% block static %} {% endblock static %}
+  </head>
+  <body>
+    <!-- ========================= header start ========================= -->
+    <div class="hero-section-header"></div>
+    <header class="header">
+      <div class="navbar-area">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                  <img src="{% static 'img/logo/logo.png' %}" alt="Logo" />
+
+                </a>
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                </button>
+
+                <div
+                  class="collapse navbar-collapse sub-menu-bar"
+                  id="navbarSupportedContent"
+                >
+                  <ul id="nav" class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                      <a class="inicio" href="{% url 'home' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="divisas" href="{% url 'badge' %}">Divisas</a>
+                    </li>
+                    <li class="nav-item">
+
+                      <!-- ? En esta parte necesitamos que valide si estamos en home o no, en caso de que si funciona como una # normal, pero en caso de que no necesitamos volver a home -->
+                      
+                      <a class="calculadora" href="#calculadora">Calculadora</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="contacto" href="{% url 'contacto' %}">Contacto</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                      <a class="saludo"
+                        >Hola, {{ request.user.first_name }}
+                        {{request.user.last_name}}</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a class="cerrar-sesion" href="{% url 'logout' %}">Cerrar Sesión</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                      <a class="iniciar-sesion" href="{% url 'login' %}">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="registrarse" href="{% url 'register' %}">Registrarse</a>
+                    </li>
+                    {% endif %}
+                  </ul>
+                </div>
+                <!-- navbar collapse -->
+              </nav>
+              <!-- navbar -->
+            </div>
+          </div>
+          <!-- row -->
+        </div>
+        <!-- container -->
+      </div>
+      <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+
+
+    {% block boody %} {% endblock boody %}
+
+    <!-- ========================= footer start ========================= -->
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="widget-wrapper">
+          <div class="row">
+            <div class="col-xl-4 col-md-6">
+              <div class="footer-widget">
+                <h3><a href="{% url 'servicios' %}"> Servicios</a></h3>
+                <ul class="links">
+                  <li><a href="{% url 'servicios' %}">Mercado</a></li>
+                  <li><a href="{% url 'servicios' %}">Divisas</a></li>
+                  <li><a href="{% url 'servicios' %}">Calculadora</a></li>
+                  <li><a href="{% url 'servicios' %}">Wallet</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+              <div class="footer-widget">
+                <h3><a href="{% url 'soporte' %}">Soporte</a></h3>
+                <ul class="links">
+                  <li><a href="{% url 'soporte' %}">Guia principiantes</a></li>
+                  <li><a href="{% url 'soporte' %}">Preguntas frecuentes</a></li>
+                  <li><a href="{% url 'soporte' %}">Feedback</a></li>
+                  <li><a href="{% url 'soporte' %}">Centro de Ayuda</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="footer-widget">
+                <h3><a href="{% url 'empresa' %}">Empresa</a></h3>
+                <ul class="links">
+                  <li><a href="{% url 'empresa' %}">Sobre nosotros</a></li>
+                  <li><a href="{% url 'empresa' %}">Vision</a></li>
+                  <li><a href="{% url 'empresa' %}">Aviso de riesgo</a></li>
+                  <li>
+                    <a href="{% url 'empresa' %}">Politica de privacidad</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+
+    <!-- ========================= Scroll top start ========================= -->
+    <button class="scrollTop-button">⬆</button>
+    <!-- ========================= Scroll top end ========================= -->
+
+    <!-- ========================= JS here ========================= -->
+    <script src="{% static 'js/bootstrap-5.0.0-beta2.min.js' %}"></script>
+    <script src="{% static 'js/tiny-slider.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/polifill.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script> <!-- si se rompe algo es por esta linea -->
+    <script src="{% static 'js/hoverEffect.js' %}"></script>
+    <script src="{% static 'js/scrolltop.js' %}"></script>
+    {% block js %} {% endblock js %}
+  </body>
+</html>
