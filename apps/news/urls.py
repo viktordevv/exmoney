@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.conf import settings
 
 urlpatterns = [
     path('news/', views.news, name="noticias1"),
@@ -8,4 +9,4 @@ urlpatterns = [
     path('news4/', views.news4, name="noticias4"),
     path('news5/', views.news5, name="noticias5"),
     path('news6/', views.news6, name="noticias6"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
