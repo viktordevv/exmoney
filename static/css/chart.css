@@ -1,0 +1,77 @@
+
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f2f2f2;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: fit-content;
+    text-align: center;
+  }
+
+  .chart-title {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+
+.chart-dates-buttons{
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(auto-fill, 60px);
+    grid-auto-rows:100px;
+}
+
+.chart-dates {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #739e40;
+    padding: 10px;
+    border:none;
+    margin: 20px 0px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:all 0.2s ease;
+}
+
+.chart-dates:hover {
+    background-color: #1a1a1a;
+}
+
+.button-active {
+    background-color:#1a1a1a;
+}
+
+.chart-dates-buttons {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .chart-container {
+        background:#fff;
+        width: 100vw;
+    }
+
+    .chart {
+        width: 90vw;
+    }
+    .chart-dates-buttons {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .chart-dates-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  

@@ -1,0 +1,47 @@
+
+<div class="container-profile">
+    <div class="profile-image">
+      <img src="https://dummyimage.com/600x400/000/fff" alt="Perfil">
+    </div>
+    <div class="edit-information">
+      <form action="" method="POST">
+        <h3 class="text-center">Edit Personal Information</h3>
+        <div class="form-group">
+          <label for="first_name" class="profile_details_text">Nombre(s):</label>
+          <input type="text" id="first_name" name="first_name" class="form-control" value="" required>
+        </div>
+        <div class="form-group">
+          <label for="last_name" class="profile_details_text">Apellido:</label>
+          <input type="text" id="last_name" name="last_name" class="form-control" value="" required>
+        </div>
+        <div class="form-group">
+          <label for="email" class="profile_details_text">Email:</label>
+          <input type="email" id="email" name="email" class="form-control" value="" required>
+        </div>
+        <div class="form-group">
+          <label for="phone" class="profile_details_text">Telefono:</label>
+          <input type="tel" id="phone" name="phone" class="form-control" value="" requir ed pattern="[0-9]{10}">
+        </div>
+        <div class="form-group">
+          <label for="birthday" class="profile_details_text">Nacimiento:</label>
+          <input type="date" id="birthday" name="birthday" class="form-control" value="" required>
+        </div>
+        <div class="form-group">
+          <label for="gender" class="profile_details_text">Genero:</label>
+          <select id="gender" name="gender" class="form-control" value="" required>
+            <option value="Male">Masculino</option>
+            <option value="Female">Femenino</option>
+            <option value="Other">Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="nationality" class="profile_details_text">Nacionalidad:</label>
+          <input type="text" id="nationality" name="nationality" class="form-control" value="" required>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-success submit" value="Submit">
+        </div>
+      </form>
+    </div>
+  </div>
+
