@@ -1,0 +1,76 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Divisas y Cryptos
+{% endblock title %}
+
+{% block static %} 
+    <link rel="stylesheet" href="{% static 'css/currency.css' %}"/> 
+{% endblock static %}
+
+
+{% block boody %}
+
+<section class="currency-body">
+    <div class="currency-wrapper">
+        <header class="curr-head">
+            <div class="curr-nav">
+                <a href="{% url 'list_bank' %}" class="menu-element"><h2 class="title">DIVISAS</h2></a>
+                <a href="{% url 'expand' %}" class="menu-element"><h2 class="title">CRIPTO</h2></a>
+                <div class="search-input">
+                    <div class="search-img"><i class="fas fa-search"></i></div>
+                    <input type="search" class="curr-search" placeholder="Buscar moneda">
+                </div>
+            </div>
+            <nav class="menu-list">
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'list' %}" class="menu-elements">Lista</a>
+                <a href="{% url 'expand' %}" class="menu-elements">Detalles</a>
+                {% else %}
+                <a href="{% url 'list' %}" class="menu-elements">Lista</a>
+                {% endif %}
+            </nav>
+        </header>
+        <main class="curr-row">
+            <div class="curr-titles">
+                <p class="currency curr-element">Moneda</p>
+                <p class="value curr-element">Simbolo</p>
+                <p class="market curr-element">Cap. de Mercado</p>
+            </div>
+            
+                {% for key, value in list.items %}
+                    <div class="curr-row-element">
+                        <div class="name-container2">
+                            <img class="curr-img" src="{{ value.icon_url }}" alt="Logo">
+                            <p class="curr-name">{{ value.name }}</p>
+                        </div>
+                        
+                        <div class="last-value2">                             
+                            <p class="usdt-value">{{ value.symbol }}</p>
+                        </div>
+                        
+                        {% if value.max_supply == "N/A" %}
+                            <div class="last-value2"> 
+                                <p class="usdt-value"> - </p>    
+                            </div>
+                        {% else %}
+                            <div class="last-value2"> 
+                                <p class="usdt-value">${{ value.max_supply }}</p>    
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                    
+            
+
+        </main>
+        {% block js %}
+        <script src="../../static/js/currency.js"></script>
+        <script src="https://kit.fontawesome.com/002c590bf1.js" crossorigin="anonymous"></script>
+        {% endblock js %}
+    </div>
+</section>
+
+{% endblock boody %}
