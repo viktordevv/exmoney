@@ -1,0 +1,25 @@
+/* ======= SCROLL TOP BUTTON ======= */
+.scrollTop-button {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:5vw;
+    background-color:#739E40;
+    color:#FFF;
+    border-radius:50px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 999;
+    border:0px;
+    color:#fff;
+    font-size: 40px;
+    transition: 0.2s;
+  }
+  
+  .scrollTop-button:hover{
+    background-color: #1a1a1a;
+  }
+  

@@ -1,0 +1,69 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Divisas y Cryptos
+{% endblock title %}
+
+{% block static %} 
+    <link rel="stylesheet" href="{% static 'css/currency.css' %}"/> 
+{% endblock static %}
+
+
+{% block boody %}
+
+<section class="currency-body">
+    <div class="currency-wrapper">
+        <header class="curr-head">
+            <div class="curr-nav">
+                <a href="{% url 'list_bank' %}" class="menu-element"><h2 class="title">DIVISAS</h2></a>
+                <a href="{% url 'expand' %}" class="menu-element"><h2 class="title">CRIPTO</h2></a>
+                
+                <div class="search-input">
+                    <div class="search-img"><i class="fas fa-search"></i></div>
+                    <input type="search" class="curr-search" placeholder="Buscar moneda">
+                </div>
+            </div>
+            <nav class="menu-list">
+                <a href="{% url 'list_bank' %}" class="menu-elements">Lista</a>
+
+            </nav>
+        </header>
+        <main class="curr-row">
+            <div class="curr-titles">
+                <p class="currency curr-element">Moneda</p>
+                <p class="value curr-element">ISO</p>
+                <p class="exchange curr-element">Valor(USD)</p>
+            </div>
+            
+            {% for key, value in expand.items %}
+                <div class="curr-row-element">
+                    <div class="last-value2">
+                        {% for key2, value2 in expand2.items %}
+                            {% if key == key2 %}
+                                <p class="usdt-value">{{ value2 }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="last-value2"> 
+                        <p class="usdt-value2">{{ key }}</p>
+                    </div>                                   
+                    <div class="last-value2"> 
+                        <p class="usdt-value">${{ value }}</p>                                
+                    </div>                    
+                </div>
+            {% endfor %}
+            
+            
+
+        </main>
+        {% block js %}
+        <script src="../../static/js/currency.js"></script>
+        <script src="https://kit.fontawesome.com/002c590bf1.js" crossorigin="anonymous"></script>
+        {% endblock js %}
+    </div>
+</section>
+
+{% endblock boody %}
+
